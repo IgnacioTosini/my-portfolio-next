@@ -17,7 +17,7 @@ export async function generateMetadata(
     const slug = (await params).slug
     const project = await getProjectBySlug(slug);
     const url = `${siteUrl}/projects/${slug}`;
-    const socialImageUrl = `${siteUrl}/projects/${slug}/opengraph-image`;
+    const socialImageUrl = `${siteUrl}/projects/${slug}/dibujoFoto.png`;
 
     return {
         title: project?.title ?? 'Proyecto no encontrado',
