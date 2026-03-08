@@ -17,7 +17,10 @@ export async function generateMetadata(
     const slug = (await params).slug
     const project = await getProjectBySlug(slug);
     const url = `${siteUrl}/projects/${slug}`;
-    const socialImageUrl = `${siteUrl}/projects/${slug}/dibujoFoto.png`;
+        const firstImage = project?.images?.[0]?.url;
+    const socialImageUrl = firstImage
+        ? new URL(firstImage, siteUrl).toString()
+        : `${siteUrl}/dibujoFoto.png`;
 
     return {
         title: project?.title ?? 'Proyecto no encontrado',
