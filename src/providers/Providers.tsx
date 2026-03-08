@@ -6,6 +6,16 @@ import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client
 import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 import { LanguageProvider } from "@/providers/LanguageProvider";
 
+const PERSISTED_CACHE_KEY = "my-portfolio-rq-cache";
+const PERSISTED_BUSTER_KEY = "my-portfolio-rq-buster";
+const SEED_BUSTER_COOKIE = "portfolio-seed-buster";
+
+const getCookieValue = (cookieName: string) => {
+    const escapedName = cookieName.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+    const match = document.cookie.match(new RegExp(`(?:^|; )${escapedName}=([^;]*)`));
+    return match ? decodeURIComponent(match[1]) : null;
+};
+
 export default function Providers({ children }: { children: React.ReactNode }) {
     const [queryClient] = React.useState(
         () =>
@@ -23,6 +33,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
     const [persister, setPersister] =
         React.useState<ReturnType<typeof createAsyncStoragePersister> | null>(null);
+    const [cacheBuster, setCacheBuster] = React.useState("v1");
 
     React.useEffect(() => {
         const asyncLocalStorage = {
@@ -38,9 +49,20 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         setPersister(
             createAsyncStoragePersister({
                 storage: asyncLocalStorage,
-                key: "my-portfolio-rq-cache",
+                key: PERSISTED_CACHE_KEY,
             })
         );
+
+        const seedBuster = getCookieValue(SEED_BUSTER_COOKIE) ?? "v1";
+        const previousBuster = window.localStorage.getItem(PERSISTED_BUSTER_KEY);
+
+        if (previousBuster !== seedBuster) {
+            window.localStorage.removeItem(PERSISTED_CACHE_KEY);
+            window.localStorage.setItem(PERSISTED_BUSTER_KEY, seedBuster);
+            queryClient.clear();
+        }
+
+        setCacheBuster(seedBuster);
     }, []);
 
     if (!persister) {
@@ -58,7 +80,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
                 persistOptions={{
                         persister,
                         maxAge: 1000 * 60 * 60 * 24,
-                        buster: "v1",
+                        buster: cacheBuster,
                         dehydrateOptions: {
                             shouldDehydrateQuery: (query) => {
                                 const key = query.queryKey[0];

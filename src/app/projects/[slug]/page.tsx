@@ -20,7 +20,7 @@ export async function generateMetadata(
         const firstImage = project?.images?.[0]?.url;
     const socialImageUrl = firstImage
         ? new URL(firstImage, siteUrl).toString()
-        : `${siteUrl}/dibujoFoto.png`;
+        : `${siteUrl}/og-image.png`;
 
     return {
         title: project?.title ?? 'Proyecto no encontrado',

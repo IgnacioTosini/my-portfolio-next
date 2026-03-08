@@ -41,15 +41,17 @@ export const Navbar = () => {
         }
     }
 
-    const scrollSectionToCenter = (sectionId: string) => {
+    const scrollSection = (sectionId: string) => {
         const section = document.getElementById(sectionId)
         if (!section) {
             return
         }
 
+        const isMobileViewport = window.innerWidth <= 768
+
         section.scrollIntoView({
             behavior: 'smooth',
-            block: 'center',
+            block: isMobileViewport ? 'start' : 'center',
         })
 
         window.history.replaceState(null, '', `/#${sectionId}`)
@@ -60,7 +62,7 @@ export const Navbar = () => {
 
         if (pathname === '/') {
             event.preventDefault()
-            scrollSectionToCenter(sectionId)
+            scrollSection(sectionId)
         }
     }
 
@@ -72,7 +74,7 @@ export const Navbar = () => {
 
         // Wait a frame so the destination section is mounted before scrolling.
         requestAnimationFrame(() => {
-            scrollSectionToCenter(hashSection)
+            scrollSection(hashSection)
         })
     }, [pathname])
 

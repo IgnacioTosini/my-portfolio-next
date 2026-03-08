@@ -4,6 +4,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 1rem;
     width: 100%;
     padding: 2rem;
     color: $color-text-secondary;

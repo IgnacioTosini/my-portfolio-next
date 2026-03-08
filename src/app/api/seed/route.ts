@@ -68,9 +68,21 @@ async function runSeed() {
 
     }
 
-    return NextResponse.json({
+    const response = NextResponse.json({
         message: "Seed executed 🌱"
     });
+
+    response.cookies.set({
+        name: "portfolio-seed-buster",
+        value: String(Date.now()),
+        path: "/",
+        sameSite: "lax",
+        httpOnly: false,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 60 * 60 * 24 * 365,
+    });
+
+    return response;
 
 }
 

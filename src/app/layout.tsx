@@ -12,7 +12,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 const siteUrl = getSiteUrl();
-const socialImageUrl = `${siteUrl}/dibujoFoto.png`;
+const socialImageUrl = `${siteUrl}/og-image.png`;
 const sameAsProfiles = [
   "https://github.com/ignaciotosini",
   "https://www.linkedin.com/in/ignacio-tosini/",
@@ -26,7 +26,7 @@ const structuredData = {
       "@id": `${siteUrl}#person`,
       name: "Ignacio Tosini",
       url: siteUrl,
-      image: `${siteUrl}/dibujoFoto.png`,
+      image: `${siteUrl}/og-image.png`,
       sameAs: sameAsProfiles,
       jobTitle: "Frontend Developer",
     },

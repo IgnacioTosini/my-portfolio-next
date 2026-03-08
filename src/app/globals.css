@@ -20,10 +20,10 @@ body {
 }
 
 
-#works,
+#home,
 #about,
-#process,
-#contact {
+#tech,
+#projects {
   scroll-margin-top: var(--anchor-offset);
 }
 

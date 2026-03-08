@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io';
 import { useLanguage } from '@/providers/LanguageProvider';
 import { animateFooter } from './animations/footerAnimations';
@@ -8,6 +9,7 @@ import './_footer.scss';
 
 export const Footer = () => {
   const footerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
   const { t } = useLanguage();
   const year = new Date().getFullYear();
 
@@ -15,7 +17,7 @@ export const Footer = () => {
     if (!footerRef.current) return;
 
     return animateFooter(footerRef.current);
-  }, []);
+  }, [pathname]);
 
   return (
     <div className='footer' ref={footerRef}>

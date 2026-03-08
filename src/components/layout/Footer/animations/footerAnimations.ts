@@ -17,6 +17,7 @@ export const animateFooter = (container: HTMLElement) => {
         trigger: container,
         start: "top 95%",
         once: true,
+        invalidateOnRefresh: true,
       },
     });
 
@@ -31,6 +32,8 @@ export const animateFooter = (container: HTMLElement) => {
       "-=0.25"
     );
   }, container);
+
+  ScrollTrigger.refresh();
 
   return () => ctx.revert();
 };
