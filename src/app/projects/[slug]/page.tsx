@@ -17,6 +17,7 @@ export async function generateMetadata(
     const slug = (await params).slug
     const project = await getProjectBySlug(slug);
     const url = `${siteUrl}/projects/${slug}`;
+    const socialImageUrl = `${siteUrl}/projects/${slug}/opengraph-image`;
 
     return {
         title: project?.title ?? 'Proyecto no encontrado',
@@ -34,13 +35,26 @@ export async function generateMetadata(
             title: project?.title ?? 'Proyecto no encontrado',
             description: project?.description ?? '',
             url,
-            images: project?.images.map((img) => img.url) ?? []
+            images: [
+                {
+                    url: socialImageUrl,
+                    width: 1200,
+                    height: 630,
+                    type: 'image/png',
+                    alt: project?.title ?? 'Proyecto no encontrado',
+                },
+            ],
         },
         twitter: {
             card: "summary_large_image",
             title: project?.title ?? 'Proyecto no encontrado',
             description: project?.description ?? '',
-            images: project?.images.map((img) => img.url) ?? [],
+            images: [
+                {
+                    url: socialImageUrl,
+                    alt: project?.title ?? 'Proyecto no encontrado',
+                },
+            ],
         }
     }
 }

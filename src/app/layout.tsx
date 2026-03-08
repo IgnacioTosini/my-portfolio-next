@@ -12,7 +12,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 const siteUrl = getSiteUrl();
-const socialImageUrl = `${siteUrl}/og-image.svg`;
+const socialImageUrl = `${siteUrl}/opengraph-image`;
 const sameAsProfiles = [
   "https://github.com/ignaciotosini",
   "https://www.linkedin.com/in/ignacio-tosini/",
@@ -64,6 +64,9 @@ export const metadata: Metadata = {
       {
         url: socialImageUrl,
         alt: "Ignacio Tosini Portfolio",
+        width: 1200,
+        height: 630,
+        type: "image/png",
       },
     ],
   },
