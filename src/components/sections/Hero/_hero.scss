@@ -1,0 +1,110 @@
+@use '@/styles/variables' as *;
+
+.hero {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    min-height: 100dvh;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .heroContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 1rem;
+        max-width: 600px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: $font-size-xxxlarge;
+            color: $color-text;
+            font-weight: $font-weight-extra-bold;
+            line-height: 1.2;
+
+            span {
+                color: $color-text-tertiary;
+            }
+        }
+
+        .heroSubtitle {
+            font-size: $font-size-large;
+            color: $color-text-secondary;
+            font-weight: $font-weight-regular;
+        }
+
+        .heroDescription {
+            font-size: $font-size-medium;
+            color: $color-text-secondary;
+            font-weight: $font-weight-regular;
+
+            .heroLight {
+                color: $color-text;
+            }
+        }
+
+        .links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+
+            @media (max-width: 768px) {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 1rem;
+            }
+
+            .link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: .5rem;
+                cursor: pointer;
+                padding: 0.75rem 1.5rem;
+                font-size: $font-size-medium-large;
+                font-weight: $font-weight-medium;
+                color: $color-text;
+                background-color: $color-button;
+                border-radius: 1rem;
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: $color-hover-primary;
+                }
+            }
+        }
+    }
+
+    .heroImage {
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid $border-color;
+        filter: drop-shadow(0 0 10px rgba($color-text-tertiary, 0.5));
+
+        @media (max-width: 768px) {
+            width: 300px;
+            height: 300px;
+        }
+    }
+}

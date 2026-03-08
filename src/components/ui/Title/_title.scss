@@ -1,0 +1,14 @@
+@use '@/styles/variables' as *;
+
+.intro {
+    font-size: $font-size-normal;
+    color: $color-text-tertiary;
+    font-weight: $font-weight-medium;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.subtitle {
+    font-size: $font-size-xlarge;
+    color: $color-text;
+    margin: 1rem 0;
+}

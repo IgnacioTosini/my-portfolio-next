@@ -1,0 +1,27 @@
+@use '@/styles/variables' as *;
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+    color: $color-text-secondary;
+    font-size: 0.875rem;
+    border-top: 1px solid $border-color;
+
+    .contactIcons {
+        display: flex;
+        gap: 1rem;
+
+        .icon {
+            color: $color-text-secondary;
+            transition: color 0.3s ease;
+            cursor: pointer;
+
+            &:hover {
+                color: $color-hover-primary;
+            }
+        }
+    }
+}

@@ -1,0 +1,103 @@
+@use '@/styles/variables' as *;
+
+.navbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem;
+    background-color: rgba($color-button, 0.9);
+    border-bottom: 1px solid $border-color;
+    z-index: 1000;
+
+    a {
+        text-decoration: none;
+    }
+
+    .hamburgerButton {
+        display: none;
+    }
+
+    h1 {
+        font-size: $font-size-medium-large;
+        color: $color-text-secondary;
+        font-family: "JetBrains Mono", monospace;
+
+        span {
+            color: $color-text-tertiary;
+        }
+    }
+
+    .links {
+        display: flex;
+        gap: 2rem;
+
+        a {
+            font-size: $font-size-normal;
+            color: $color-text-secondary;
+            font-family: "Space Grotesk", system-ui, sans-serif;
+            transition: color 0.3s ease;
+            text-decoration: none;
+
+            &:hover {
+                color: $color-hover-primary;
+            }
+        }
+
+        .contactIcons {
+            display: flex;
+            gap: 1rem;
+
+            .icon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                color: $color-text-secondary;
+                transition: color 0.3s ease;
+                cursor: pointer;
+
+                &:hover {
+                    color: $color-hover-primary;
+                }
+            }
+        }
+
+        .languageToggle {
+            border: 1px solid $border-color;
+            background: transparent;
+            color: $color-text-secondary;
+            border-radius: 0.5rem;
+            padding: 0.25rem 0.6rem;
+            font-size: $font-size-small;
+            font-family: "JetBrains Mono", monospace;
+            cursor: pointer;
+            transition: color 0.3s ease, border-color 0.3s ease;
+
+            &:hover {
+                color: $color-hover-primary;
+                border-color: $color-hover-primary;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        justify-content: space-between;
+        padding: 1rem 1.25rem;
+
+        .links {
+            display: none;
+        }
+
+        .hamburgerButton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            background: transparent;
+            color: $color-text-secondary;
+            cursor: pointer;
+        }
+    }
+}

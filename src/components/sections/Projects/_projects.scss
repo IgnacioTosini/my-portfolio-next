@@ -1,0 +1,18 @@
+@use '@/styles/variables' as *;
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 80dvh;
+    margin: 0 auto;
+    padding: 2rem;
+
+    .projectsSubtitle {
+        font-size: $font-size-xlarge;
+        color: $color-text;
+        margin: 1rem 0;
+    }
+}

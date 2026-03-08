@@ -1,0 +1,71 @@
+@use '@/styles/variables' as *;
+
+.projectCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $color-button;
+    border: 1px solid $border-color;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all .3s ease;
+    overflow: hidden;
+    filter: drop-shadow(0 4px 6px rgba($color-hover-primary, 0.2));
+    max-width: 500px;
+    height: 100%;
+
+    a {
+        text-decoration: none;
+    }
+
+    .projectImage {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .projectContent {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .projectTitle {
+            font-size: $font-size-medium-large;
+            color: $color-text;
+            font-weight: $font-weight-bold;
+        }
+
+        .projectDescription {
+            font-size: $font-size-normal;
+            color: $color-text-secondary;
+        }
+
+        .projectTechnologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            .projectTechnology {
+                background-color: $color-hover-secondary;
+                color: $color-text;
+                padding: 0.25rem 0.5rem;
+                border-radius: 0.5rem;
+                font-size: $font-size-small;
+            }
+        }
+    }
+
+    &:hover {
+        border-color: $color-hover-primary;
+        filter: drop-shadow(0 4px 6px rgba($color-hover-primary, 0.3));
+        transform: translateY(2px);
+    }
+
+    &:hover .projectImage {
+        transform: scale(1.05);
+    }
+}

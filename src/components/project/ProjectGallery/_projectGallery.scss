@@ -1,0 +1,167 @@
+@use '../../../styles/variables' as *;
+
+.projectGallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    .imageContainer {
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        height: clamp(260px, 62vh, 760px);
+        overflow: hidden;
+        margin-bottom: 3rem;
+
+        .mainProjectImage {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        @media (max-width: 768px) {
+            height: clamp(220px, 52vh, 520px);
+            border-radius: .75rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .projectPageContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 1000px;
+        padding: 1rem;
+
+        .backButton {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            color: $color-text-secondary;
+            text-decoration: none;
+            font-size: $font-size-normal;
+            margin-bottom: 2rem;
+
+            &:hover {
+                color: $color-hover-secondary;
+            }
+        }
+
+        .projectData {
+            display: flex;
+            flex-direction: row-reverse;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+
+            @media (max-width: 500px) {
+                flex-direction: column;
+            }
+
+            .projectDataHeader {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+
+                h1 {
+                    display: flex;
+                    gap: .5rem;
+                    font-family: "DM Serif Display", Georgia, serif;
+                    font-size: clamp($font-size-large, 3vw, $font-size-xxlarge);
+
+                    span {
+                        font-size: $font-size-medium;
+                        color: $color-text-secondary;
+                    }
+                }
+
+                .projectTechnologies {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: .5rem;
+                }
+            }
+        }
+
+        .imagesList {
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+            margin: 2rem;
+            max-width: 800px;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+
+            .mediaThumbButton {
+                display: block;
+                background: transparent;
+                border: 1px solid transparent;
+                border-radius: 1rem;
+                padding: 0;
+                cursor: pointer;
+                transition: transform .25s ease, border-color .25s ease;
+
+                &:hover {
+                    border-color: rgba($color-hover-secondary, 0.6);
+                    transform: translateY(-2px);
+                }
+
+                &.active {
+                    border-color: $color-hover-secondary;
+                    transform: translateY(-2px);
+
+                    .projectCardImage {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .projectCardImage {
+                max-width: 150px;
+                height: 150px;
+                object-fit: cover;
+                border-radius: 1rem;
+                display: block;
+                transition: opacity .25s ease;
+                opacity: 0.5;
+
+                @media (max-width: 768px) {
+                    max-width: 160px;
+                    height: 160px;
+                }
+
+                @media (max-width: 500px) {
+                    max-width: 128px;
+                    height: 128px;
+                }
+            }
+        }
+
+        .projectDescription {
+            h2 {
+                font-size: $font-size-large;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                font-size: $font-size-medium;
+                line-height: 1.6;
+                color: $color-text-secondary;
+                padding-left: 1rem;
+            }
+
+            .shortDescription {
+                margin-bottom: 1rem;
+                font-size: $font-size-medium-large;
+            }
+
+            .longDescription {
+                margin-bottom: 2rem;
+                font-size: $font-size-medium;
+                line-height: 1.6;
+            }
+        }
+    }
+}

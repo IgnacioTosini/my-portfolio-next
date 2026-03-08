@@ -1,0 +1,39 @@
+@use '@/styles/variables' as *;
+@use 'sass:color';
+
+.projectLinks {
+    display: flex;
+    gap: 1rem;
+    padding: 0 1rem 1rem;
+    z-index: 1;
+
+    .projectLink {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: $color-text;
+        text-decoration: none;
+        font-weight: $font-weight-medium;
+        font-size: $font-size-small;
+        border: 1px solid $border-color;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+            background-color: $color-hover-secondary;
+            color: $color-button-secondary;
+        }
+    }
+
+    .demo {
+        background-color: $color-hover-primary;
+        color: $color-text;
+        border: none;
+
+        &:hover {
+            background-color: color.adjust($color-hover-primary, $lightness: -10%);
+            color: $color-text;
+        }
+    }
+}
