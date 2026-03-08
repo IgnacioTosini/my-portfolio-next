@@ -19,5 +19,5 @@ export const getSiteUrl = () => {
         return normalizeUrl(vercelUrl);
     }
 
-    return "https://myportfolioit.vercel.app";
+    return "https://my-portfolio-next.vercel.app";
 };

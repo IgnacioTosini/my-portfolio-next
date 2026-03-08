@@ -49,10 +49,48 @@ export default async function ProjectPage({ params, searchParams }: Props) {
     const { slug } = await params;
     const { tech } = await searchParams;
     const project = await getProjectBySlug(slug)
+
+    if (!project) {
+        return <div className="projectPage" />;
+    }
+
+    const projectUrl = `${siteUrl}/projects/${project.slug}`;
+    const hasRepository = Boolean(project.githubUrl);
+    const projectStructuredData: Record<string, unknown> = {
+        "@context": "https://schema.org",
+        "@type": hasRepository ? "SoftwareSourceCode" : "CreativeWork",
+        "@id": `${projectUrl}#project`,
+        name: project.title,
+        description: project.description,
+        url: projectUrl,
+        datePublished: project.createdAt.toISOString(),
+        dateModified: project.updatedAt.toISOString(),
+        inLanguage: "es",
+        image: project.images.map((image) => image.url),
+        creator: {
+            "@type": "Person",
+            name: "Ignacio Tosini",
+            url: siteUrl,
+        },
+        keywords: project.technologies.map((technology) => technology.name),
+    };
+
+    if (hasRepository) {
+        projectStructuredData.codeRepository = project.githubUrl;
+        projectStructuredData.runtimePlatform = "Web";
+        projectStructuredData.programmingLanguage = project.technologies.map(
+            (technology) => technology.name
+        );
+    }
+
     const selectedTech = Array.isArray(tech) ? tech[0] : tech;
     return (
         <div className="projectPage">
-            <ProjectGallery project={project!} selectedTechParam={selectedTech} />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(projectStructuredData) }}
+            />
+            <ProjectGallery project={project} selectedTechParam={selectedTech} />
         </div>
     );
 }

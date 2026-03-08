@@ -3,6 +3,7 @@ import { Space_Grotesk } from "next/font/google";
 import { Footer } from "@/components/layout/Footer/Footer";
 import { Navbar } from "@/components/layout/Navbar/Navbar";
 import Providers from "@/providers/Providers";
+import { getSiteUrl } from "@/utils/site-url";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -10,16 +11,58 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
+const siteUrl = getSiteUrl();
+const socialImageUrl = `${siteUrl}/og-image.svg`;
+const sameAsProfiles = [
+  "https://github.com/ignaciotosini",
+  "https://www.linkedin.com/in/ignacio-tosini/",
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}#person`,
+      name: "Ignacio Tosini",
+      url: siteUrl,
+      image: `${siteUrl}/dibujoFoto.webp`,
+      sameAs: sameAsProfiles,
+      jobTitle: "Frontend Developer",
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}#website`,
+      name: "Ignacio Tosini - Portfolio",
+      url: siteUrl,
+      inLanguage: "es",
+      publisher: {
+        "@id": `${siteUrl}#person`,
+      },
+    },
+  ],
+} as const;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Ignacio Tosini - Portfolio",
   description: "Desarrollador Full Stack con experiencia en React, Node.js y bases de datos. Apasionado por crear soluciones web eficientes y escalables. En este portfolio encontrarás mis proyectos destacados, habilidades técnicas y formas de contacto. ¡Explora mi trabajo y no dudes en conectarte conmigo!",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "Ignacio Tosini - Portfolio",
     description: "Desarrollador Full Stack con experiencia en React, Node.js y bases de datos. Apasionado por crear soluciones web eficientes y escalables. En este portfolio encontrarás mis proyectos destacados, habilidades técnicas y formas de contacto. ¡Explora mi trabajo y no dudes en conectarte conmigo!",
-    url: "https://ignaciotosini.com",
+    url: siteUrl,
+    type: "website",
+    locale: "es_AR",
     images: [
       {
-        url: "https://ignaciotosini.com/dibujoFoto.webp",
+        url: socialImageUrl,
         alt: "Ignacio Tosini Portfolio",
       },
     ],
@@ -30,7 +73,7 @@ export const metadata: Metadata = {
     description: "Desarrollador Full Stack con experiencia en React, Node.js y bases de datos. Apasionado por crear soluciones web eficientes y escalables. En este portfolio encontrarás mis proyectos destacados, habilidades técnicas y formas de contacto. ¡Explora mi trabajo y no dudes en conectarte conmigo!",
     images: [
       {
-        url: "https://ignaciotosini.com/dibujoFoto.webp",
+        url: socialImageUrl,
         alt: "Ignacio Tosini Portfolio",
       },
     ],
@@ -48,6 +91,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${spaceGrotesk.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <Providers>
           <Navbar />
           {children}
