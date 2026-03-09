@@ -34,7 +34,7 @@
         }
 
         h1 {
-            font-size: $font-size-xxxlarge;
+            font-size: clamp($font-size-xlarge, 5vw, $font-size-xxxlarge);
             color: $color-text;
             font-weight: $font-weight-extra-bold;
             line-height: 1.2;
@@ -45,13 +45,13 @@
         }
 
         .heroSubtitle {
-            font-size: $font-size-large;
+            font-size: clamp($font-size-large, 2.5vw, $font-size-xlarge);
             color: $color-text-secondary;
             font-weight: $font-weight-regular;
         }
 
         .heroDescription {
-            font-size: $font-size-medium;
+            font-size: clamp($font-size-medium, 2vw, $font-size-large);
             color: $color-text-secondary;
             font-weight: $font-weight-regular;
 
@@ -70,6 +70,7 @@
                 justify-content: center;
                 align-items: center;
                 padding: 1rem;
+                margin-top: 0;
             }
 
             .link {
@@ -89,6 +90,11 @@
 
                 &:hover {
                     background-color: $color-hover-primary;
+                }
+
+                @media (max-width: 768px) {
+                    font-size: $font-size-medium;
+                    padding: 0.5rem 1rem;
                 }
             }
         }
