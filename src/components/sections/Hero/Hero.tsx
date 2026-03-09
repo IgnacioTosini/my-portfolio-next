@@ -3,7 +3,8 @@
 import { FaCloudDownloadAlt } from "react-icons/fa"
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5"
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { Title } from "@/components/ui/Title/Title";
 import { useLanguage } from "@/providers/LanguageProvider";
 import { animateHero } from "./animations/heroAnimations";
@@ -11,13 +12,71 @@ import './_hero.scss';
 
 export const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const heroImageButtonRef = useRef<HTMLButtonElement>(null);
+  const timeoutIdsRef = useRef<number[]>([]);
+  const [showProfilePhoto, setShowProfilePhoto] = useState(false);
+  const [isImageSpinning, setIsImageSpinning] = useState(false);
   const { t } = useLanguage();
 
-  useEffect(() => {
-    if (!heroRef.current) return;
+  const spinHeroImage = (duration = 0.9, onFinish?: () => void) => {
+    if (!heroImageButtonRef.current) {
+      onFinish?.();
+      return;
+    }
 
-    return animateHero(heroRef.current);
+    setIsImageSpinning(true);
+
+    const spinTimeline = gsap.timeline();
+
+    spinTimeline
+      .to(heroImageButtonRef.current, {
+        rotateY: "+=360",
+        duration,
+        ease: "power2.inOut",
+      })
+      .call(() => {
+        setShowProfilePhoto((previous) => !previous);
+      }, [], duration * 0.7)
+      .call(() => {
+        setIsImageSpinning(false);
+        onFinish?.();
+      }, [], duration);
+  };
+
+  useEffect(() => {
+    if (!heroRef.current || !heroImageButtonRef.current) return;
+
+    const timeoutIds = timeoutIdsRef.current;
+    const imageButton = heroImageButtonRef.current;
+    const cleanupHeroAnimation = animateHero(heroRef.current, {
+      onEntryComplete: () => {
+        const firstExtraSpinTimeout = window.setTimeout(() => {
+          spinHeroImage(1.2);
+        }, 420);
+
+        const secondExtraSpinTimeout = window.setTimeout(() => {
+          spinHeroImage(1.55, () => {
+            // Keep the hero settled with the first image after the intro sequence.
+            setShowProfilePhoto(false);
+          });
+        }, 2400);
+
+        timeoutIds.push(firstExtraSpinTimeout, secondExtraSpinTimeout);
+      },
+    });
+
+    return () => {
+      cleanupHeroAnimation();
+      gsap.killTweensOf(imageButton);
+      timeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId));
+    };
   }, []);
+
+  const handleHeroImageToggle = () => {
+    if (isImageSpinning) return;
+
+    spinHeroImage();
+  };
 
   return (
     <div className="hero" id="home" ref={heroRef}>
@@ -28,7 +87,6 @@ export const Hero = () => {
         <h1 data-hero-anim="heading">Ignacio <span>Tosini</span></h1>
         <h2 className="heroSubtitle" data-hero-anim="subtitle">{t('hero.role')}</h2>
         <p className="heroDescription" data-hero-anim="description">{t('hero.description1')}</p>
-        <p className="heroDescription" data-hero-anim="description">{t('hero.description2')}</p>
         <div className="links">
           <a className="link" href="https://github.com/ignaciotosini" target="_blank" rel="noopener noreferrer" data-hero-anim="link">
             <IoLogoGithub size={24} className='icon' />
@@ -38,13 +96,33 @@ export const Hero = () => {
             <IoLogoLinkedin size={24} className='icon' />
             {t('hero.linkedin')}
           </a>
-          <a className="link" href="#" data-hero-anim="link">
+          <a
+            className="link"
+            href="/CurriculumIgnacioTosini.pdf"
+            download="CurriculumIgnacioTosini.pdf"
+            data-hero-anim="link"
+          >
             <FaCloudDownloadAlt size={24} className='icon' />
             {t('hero.downloadCv')}
           </a>
         </div>
       </div>
-      <Image src="/dibujoFoto.webp" alt={t('hero.profileImageAlt')} width={300} height={400} className="heroImage" data-hero-anim="image" />
+      <button
+        type="button"
+        ref={heroImageButtonRef}
+        className={`heroImageButton ${isImageSpinning ? 'is-spinning' : ''}`}
+        onClick={handleHeroImageToggle}
+        data-hero-anim="image"
+        aria-label={t('hero.profileImageAlt')}
+      >
+        <Image
+          src={showProfilePhoto ? "/perfil.jpeg" : "/dibujoFoto.png"}
+          alt={t('hero.profileImageAlt')}
+          width={300}
+          height={400}
+          className="heroImage"
+        />
+      </button>
     </div>
   )
 }

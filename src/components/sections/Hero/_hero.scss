@@ -94,17 +94,36 @@
         }
     }
 
-    .heroImage {
-        width: 400px;
-        height: 400px;
+    .heroImageButton {
+        border: 0;
+        background: transparent;
+        padding: 0;
         border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid $border-color;
-        filter: drop-shadow(0 0 10px rgba($color-text-tertiary, 0.5));
+        cursor: pointer;
+        perspective: 1000px;
+        transform-style: preserve-3d;
 
-        @media (max-width: 768px) {
-            width: 300px;
-            height: 300px;
+        &:focus-visible {
+            outline: 2px solid $color-text-tertiary;
+            outline-offset: 6px;
+        }
+
+        &.is-spinning {
+            pointer-events: none;
+        }
+
+        .heroImage {
+            height: 450px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid $border-color;
+            backface-visibility: hidden;
+            filter: drop-shadow(0 0 10px rgba($color-text-tertiary, 0.5));
+
+            @media (max-width: 768px) {
+                width: 300px;
+                height: 300px;
+            }
         }
     }
 }

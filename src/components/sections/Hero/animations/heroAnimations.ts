@@ -1,6 +1,11 @@
 import gsap from "gsap";
 
-export const animateHero = (container: HTMLElement) => {
+type HeroAnimationOptions = {
+    onEntryComplete?: () => void;
+};
+
+export const animateHero = (container: HTMLElement, options: HeroAnimationOptions = {}) => {
+    const { onEntryComplete } = options;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (reduceMotion) {
@@ -41,10 +46,23 @@ export const animateHero = (container: HTMLElement) => {
             )
             .fromTo(
                 "[data-hero-anim='image']",
-                { autoAlpha: 0, x: 42, scale: 0.92, rotate: 2 },
-                { autoAlpha: 1, x: 0, scale: 1, rotate: 0, duration: 0.8 },
+                {
+                    autoAlpha: 0,
+                    x: 42,
+                    scale: 0.92,
+                    rotate: 2,
+                },
+                {
+                    autoAlpha: 1,
+                    x: 0,
+                    scale: 1,
+                    rotate: 0,
+                    duration: 0.8,
+                },
                 "<"
             );
+
+        tl.eventCallback("onComplete", onEntryComplete ?? null);
     }, container);
 
     return () => ctx.revert();

@@ -7,6 +7,15 @@ const nextConfig: NextConfig = {
         pathname: "/dibujoFoto.webp",
       },
       {
+        pathname: "/dibujoFoto.jpg",
+      },
+      {
+        pathname: "/dibujoFoto.png",
+      },
+      {
+        pathname: "/perfil.jpeg",
+      },
+      {
         pathname: "/projects/**",
       },
     ],
