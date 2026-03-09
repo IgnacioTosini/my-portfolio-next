@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: "/dibujoFoto.webp",
+    icon: "/dibujoFoto.png",
   },
 };
 
