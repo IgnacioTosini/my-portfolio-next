@@ -121,7 +121,7 @@ export const Navbar = () => {
                     <Link href="/#about" onClick={(event) => handleSectionNavigation(event, 'about')} data-navbar-anim="link">{t('navigation.about')}</Link>
                     <Link href="/#tech" onClick={(event) => handleSectionNavigation(event, 'tech')} data-navbar-anim="link">{t('navigation.tech')}</Link>
                     <Link href="/#projects" onClick={(event) => handleSectionNavigation(event, 'projects')} data-navbar-anim="link">{t('navigation.projects')}</Link>
-                    <Link href="/projects" data-navbar-anim="link">{t('navigation.allProjects')}</Link>
+                    <Link href="/projects" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })} data-navbar-anim="link">{t('navigation.allProjects')}</Link>
                     <button
                         type="button"
                         className="languageToggle"
