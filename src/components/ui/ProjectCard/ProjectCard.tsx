@@ -17,7 +17,7 @@ export const ProjectCard = ({ project }: Props) => {
 
     return (
         <div className='projectCard'>
-            <Link href={`/projects/${project.slug}`} className='projectLink'>
+            <Link href={`/projects/${project.slug}`} scroll={true} className='projectLink'>
                 <Image src={imageUrlWithVersion} alt={project.images[0]?.alt || project.title} width={400} height={300} className='projectImage' />
                 <div className='projectContent'>
                     <h3 className='projectTitle'>{project.title}</h3>
