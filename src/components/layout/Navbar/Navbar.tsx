@@ -54,6 +54,13 @@ export const Navbar = () => {
             block: isMobileViewport ? 'start' : 'center',
         })
 
+        if (sectionId === 'projects') {
+            section.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            })
+        }
+
         window.history.replaceState(null, '', `/#${sectionId}`)
     }
 

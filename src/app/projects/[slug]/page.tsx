@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { getSiteUrl } from '@/utils/site-url';
 import { getProjectBySlug } from '@/actions/project/getProjectBySlug';
 import ProjectGallery from '@/components/project/ProjectGallery/ProjectGallery';
+import { ScrollToTopOnMount } from '@/components/ui/ScrollToTopOnMount/ScrollToTopOnMount';
 import './_projectPage.scss';
 
 const siteUrl = getSiteUrl();
@@ -103,6 +104,7 @@ export default async function ProjectPage({ params, searchParams }: Props) {
     const selectedTech = Array.isArray(tech) ? tech[0] : tech;
     return (
         <div className="projectPage">
+            <ScrollToTopOnMount />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(projectStructuredData) }}

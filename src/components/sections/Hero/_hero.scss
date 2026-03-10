@@ -45,13 +45,13 @@
         }
 
         .heroSubtitle {
-            font-size: clamp($font-size-large, 2.5vw, $font-size-xlarge);
+            font-size: clamp($font-size-medium-large, 2.5vw, $font-size-large);
             color: $color-text-secondary;
             font-weight: $font-weight-regular;
         }
 
         .heroDescription {
-            font-size: clamp($font-size-medium, 2vw, $font-size-large);
+            font-size: clamp($font-size-medium, 2vw, $font-size-medium-large);
             color: $color-text-secondary;
             font-weight: $font-weight-regular;
 
