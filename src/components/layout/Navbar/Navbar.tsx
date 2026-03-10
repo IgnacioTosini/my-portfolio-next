@@ -7,6 +7,7 @@ import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { HamburgerNavbar } from '@/components/layout/HamburgerNavbar/HamburgerNavbar'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { PROJECTS_SMOOTH_SCROLL_KEY } from '@/utils/navigation-scroll'
 import { animateNavbar } from './animations/navbarAnimations'
 import './_navbar.scss'
 
@@ -39,6 +40,15 @@ export const Navbar = () => {
         if (isMobile) {
             setIsMenuOpen(false)
         }
+    }
+
+    const markProjectsNavigation = () => {
+        sessionStorage.setItem(PROJECTS_SMOOTH_SCROLL_KEY, '1')
+    }
+
+    const handleProjectsPageNavigation = () => {
+        markProjectsNavigation()
+        closeMobileMenu()
     }
 
     const scrollSection = (sectionId: string) => {
@@ -114,6 +124,7 @@ export const Navbar = () => {
                         isOpen={isMenuOpen}
                         onSectionClick={handleSectionNavigation}
                         onLinkClick={closeMobileMenu}
+                        onProjectsLinkClick={handleProjectsPageNavigation}
                     />
                 </>
             ) : (
@@ -121,7 +132,7 @@ export const Navbar = () => {
                     <Link href="/#about" onClick={(event) => handleSectionNavigation(event, 'about')} data-navbar-anim="link">{t('navigation.about')}</Link>
                     <Link href="/#tech" onClick={(event) => handleSectionNavigation(event, 'tech')} data-navbar-anim="link">{t('navigation.tech')}</Link>
                     <Link href="/#projects" onClick={(event) => handleSectionNavigation(event, 'projects')} data-navbar-anim="link">{t('navigation.projects')}</Link>
-                    <Link href="/projects" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })} data-navbar-anim="link">{t('navigation.allProjects')}</Link>
+                    <Link href="/projects" onClick={markProjectsNavigation} data-navbar-anim="link">{t('navigation.allProjects')}</Link>
                     <button
                         type="button"
                         className="languageToggle"

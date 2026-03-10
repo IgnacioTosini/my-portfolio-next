@@ -7,6 +7,7 @@ import { TechList } from "@/components/ui/TechList/TechList";
 import { ProjectsGrid } from "@/components/ui/ProjectsGrid/ProjectsGrid";
 import { Title } from "@/components/ui/Title/Title";
 import { useLanguage } from "@/providers/LanguageProvider";
+import { PROJECTS_SMOOTH_SCROLL_KEY } from "@/utils/navigation-scroll";
 import { animateProjectsPage } from "./animations/projectsPageAnimations";
 import './_projectsClient.scss'
 
@@ -41,6 +42,24 @@ export default function ProjectsClient({ projects }: Props) {
             project.technologies.some((technology) => technology.name === selectedTechFromUrl)
         )
         : projects;
+
+    useEffect(() => {
+        const shouldUseSmoothScroll = sessionStorage.getItem(PROJECTS_SMOOTH_SCROLL_KEY) === '1';
+        sessionStorage.removeItem(PROJECTS_SMOOTH_SCROLL_KEY);
+
+        if (!shouldUseSmoothScroll) {
+            return;
+        }
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        });
+
+    }, []);
 
     useEffect(() => {
         if (!containerRef.current) {
