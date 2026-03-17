@@ -4,11 +4,13 @@ import { ProjectSeed } from "../../types/project-seed";
 import { alukkartPortFolioProject } from "./alukkartPortFolio";
 import { polivalenteProject } from "./polivalente";
 import { lemareProject } from "./lemare";
+import { ecommerceFakeProject } from './ecommerceFake';
 
 export const projects: ProjectSeed[] = [
     crostiFocacciaProject,
     hekademosProject,
     alukkartPortFolioProject,
     polivalenteProject,
-    lemareProject
+    lemareProject,
+    ecommerceFakeProject
 ];
