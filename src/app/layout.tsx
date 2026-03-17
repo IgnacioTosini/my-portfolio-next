@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer/Footer";
 import { Navbar } from "@/components/layout/Navbar/Navbar";
 import Providers from "@/providers/Providers";
 import { getSiteUrl } from "@/utils/site-url";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -101,6 +102,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           {children}
+          <SpeedInsights />
           <Footer />
         </Providers>
       </body>
