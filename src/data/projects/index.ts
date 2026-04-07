@@ -5,6 +5,7 @@ import { alukkartPortFolioProject } from "./alukkartPortFolio";
 import { polivalenteProject } from "./polivalente";
 import { lemareProject } from "./lemare";
 import { ecommerceFakeProject } from './ecommerceFake';
+import { santiagoTosiniPortfolioProject } from "./santiagoTosiniPorfolio";
 
 export const projects: ProjectSeed[] = [
     crostiFocacciaProject,
@@ -12,5 +13,6 @@ export const projects: ProjectSeed[] = [
     alukkartPortFolioProject,
     polivalenteProject,
     lemareProject,
-    ecommerceFakeProject
+    ecommerceFakeProject,
+    santiagoTosiniPortfolioProject
 ];
