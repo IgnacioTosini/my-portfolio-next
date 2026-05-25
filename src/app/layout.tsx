@@ -6,6 +6,7 @@ import Providers from "@/providers/Providers";
 import { getSiteUrl } from "@/utils/site-url";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({

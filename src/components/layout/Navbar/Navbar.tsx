@@ -133,6 +133,7 @@ export const Navbar = () => {
                     <Link href="/#tech" onClick={(event) => handleSectionNavigation(event, 'tech')} data-navbar-anim="link">{t('navigation.tech')}</Link>
                     <Link href="/#projects" onClick={(event) => handleSectionNavigation(event, 'projects')} data-navbar-anim="link">{t('navigation.projects')}</Link>
                     <Link href="/projects" onClick={markProjectsNavigation} data-navbar-anim="link">{t('navigation.allProjects')}</Link>
+                    <Link href="/#contact" onClick={(event) => handleSectionNavigation(event, 'contact')} data-navbar-anim="link">{t('navigation.contact')}</Link>
                     <button
                         type="button"
                         className="languageToggle"

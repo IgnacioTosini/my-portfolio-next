@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 import { LanguageProvider } from "@/providers/LanguageProvider";
+import { ToastContainer } from "react-toastify";
 
 const PERSISTED_CACHE_KEY = "my-portfolio-rq-cache";
 const PERSISTED_BUSTER_KEY = "my-portfolio-rq-buster";
@@ -68,7 +69,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     if (!persister) {
         return (
             <LanguageProvider>
-                <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+                <QueryClientProvider client={queryClient}>
+                    {children}
+                    <ToastContainer position="bottom-right" autoClose={3500} />
+                </QueryClientProvider>
             </LanguageProvider>
         );
     }
@@ -90,6 +94,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
                     }}
                 >
                     {children}
+                    <ToastContainer position="top-right" autoClose={3500} />
                 </PersistQueryClientProvider>
         </LanguageProvider>
     );

@@ -50,45 +50,6 @@ export const TechList = ({ selectedTech, onSelectTech }: Props) => {
         };
     }, [projects.length]);
 
-    /*     useGSAP(() => {
-            if (prefersReducedMotion()) {
-                return;
-            }
-    
-            const list = listRef.current;
-            if (!list) {
-                return;
-            }
-    
-            const newProjectItems = Array.from(
-                list.querySelectorAll<HTMLElement>('.project[data-project-item="true"]:not([data-project-animated="true"])')
-            );
-    
-            if (newProjectItems.length === 0) {
-                return;
-            }
-    
-            newProjectItems.forEach((item) => {
-                item.setAttribute('data-project-animated', 'true');
-            });
-    
-            gsap.fromTo(
-                newProjectItems,
-                {
-                    autoAlpha: 0,
-                    y: 10,
-                },
-                {
-                    autoAlpha: 1,
-                    y: 0,
-                    duration: 0.3,
-                    stagger: 0.06,
-                    ease: motionPreset.ease,
-                    clearProps: 'opacity,visibility,transform',
-                }
-            );
-        }, [sortedProjects.length]); */
-
     const showHint = isScrollable && !hasSeenHint;
 
     const hideHint = () => {

@@ -1,0 +1,23 @@
+@use '../../../styles/variables' as *;
+
+.contactSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: $primary-color;
+    padding: 3rem;
+
+    .subTitle {
+        font-size: clamp($font-size-large, 4vw, $font-size-xxlarge);
+    }
+
+    p {
+        line-height: 23px;
+        color: $color-text-secondary;
+        max-width: 600px;
+        text-align: center;
+        margin: 1.5rem 0;
+    }
+}

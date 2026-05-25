@@ -12,7 +12,7 @@ type HamburgerNavbarProps = {
     onProjectsLinkClick: () => void;
 };
 
-export const HamburgerNavbar = ({ id, isOpen, onSectionClick, onLinkClick, onProjectsLinkClick }: HamburgerNavbarProps) => {
+export const HamburgerNavbar = ({ id, isOpen, onSectionClick, onProjectsLinkClick }: HamburgerNavbarProps) => {
     const { locale, setLocale, t } = useLanguage();
 
     return (
@@ -21,6 +21,7 @@ export const HamburgerNavbar = ({ id, isOpen, onSectionClick, onLinkClick, onPro
             <Link href="/#tech" onClick={(event) => onSectionClick(event, 'tech')}>{t('navigation.tech')}</Link>
             <Link href="/#projects" onClick={(event) => onSectionClick(event, 'projects')}>{t('navigation.projects')}</Link>
             <Link href="/projects" onClick={onProjectsLinkClick}>{t('navigation.allProjects')}</Link>
+            <Link href="/#contact" onClick={(event) => onSectionClick(event, 'contact')}>{t('navigation.contact')}</Link>
             <button
                 type="button"
                 className="languageToggle"
