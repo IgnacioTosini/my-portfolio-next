@@ -25,7 +25,7 @@ export const getProjectBySlug = async (slug: string): Promise<Project | null> =>
         return project;
 
     } catch (error) {
-        console.log(error)
-        throw new Error('Error al obtener project por slug')
+        console.error('Error al obtener proyecto por slug:', error)
+        throw new Error('Error al obtener proyecto por slug')
     }
 }

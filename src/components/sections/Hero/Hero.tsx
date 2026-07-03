@@ -116,10 +116,12 @@ export const Hero = () => {
         aria-label={t('hero.profileImageAlt')}
       >
         <Image
-          src={showProfilePhoto ? "/perfil.jpeg" : "/dibujoFoto.png"}
+          src={showProfilePhoto ? "/fotoPerfil.jpeg" : "/dibujoFoto.png"}
           alt={t('hero.profileImageAlt')}
           width={300}
           height={400}
+          sizes="(max-width: 768px) 300px, 338px"
+          priority
           className="heroImage"
         />
       </button>

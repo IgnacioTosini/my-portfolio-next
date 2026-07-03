@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Project } from "@/types/project";
 import { TechList } from "@/components/ui/TechList/TechList";
@@ -37,11 +37,15 @@ export default function ProjectsClient({ projects }: Props) {
         router.replace(nextQuery ? `${pathname}?${nextQuery}` : pathname, { scroll: false });
     }, [pathname, router, searchParams]);
 
-    const filteredProjects = selectedTechFromUrl
-        ? projects.filter(project =>
+    const filteredProjects = useMemo(() => {
+        if (!selectedTechFromUrl) {
+            return projects;
+        }
+
+        return projects.filter(project =>
             project.technologies.some((technology) => technology.name === selectedTechFromUrl)
-        )
-        : projects;
+        );
+    }, [projects, selectedTechFromUrl]);
 
     useEffect(() => {
         const shouldUseSmoothScroll = sessionStorage.getItem(PROJECTS_SMOOTH_SCROLL_KEY) === '1';
@@ -76,6 +80,7 @@ export default function ProjectsClient({ projects }: Props) {
             </div>
             <div data-projects-page-anim="filters">
                 <TechList
+                    projects={projects}
                     selectedTech={selectedTechFromUrl}
                     onSelectTech={handleSelectTech}
                 />

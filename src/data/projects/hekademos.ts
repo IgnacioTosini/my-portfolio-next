@@ -3,14 +3,14 @@ import { ProjectSeed } from "../../types/project-seed";
 export const hekademosProject: ProjectSeed = {
     title: "Hekademos",
     slug: "hekademos",
-    description: "Plataforma educativa.",
-    longDescription: "Plataforma educativa para la gestión de cursos, profesores y estudiantes. Permite a los usuarios registrarse como estudiantes o profesores, inscribirse en cursos, acceder a materiales de estudio y participar en actividades interactivas. Los profesores pueden crear y gestionar sus cursos, subir materiales, asignar tareas y evaluar el progreso de los estudiantes. Los estudiantes pueden navegar por el catálogo de cursos, inscribirse en los que les interesen y acceder a los contenidos desde cualquier dispositivo. Desarrollada con Next.js, TypeScript y SCSS, la plataforma ofrece una experiencia de usuario fluida y responsiva, con un diseño moderno y atractivo.",
+    description: "Sistema de gestión para gimnasio.",
+    longDescription: "Sistema integral desarrollado para Hekademos, orientado a centralizar la gestión diaria de un gimnasio. Permite administrar usuarios, alumnos, coaches, membresías, pagos, turnos, asistencia, rutinas y solicitudes de cambio de horario desde un panel administrativo. Los coaches pueden consultar sus alumnos, revisar horarios, actualizar rutinas y registrar información relevante, mientras que los alumnos cuentan con un perfil propio para ver su plan, pagos, asistencia, turnos elegidos, rutina y solicitar cambios. También incorpora recordatorios por email, recuperación de contraseña, auditoría de acciones, carga de imágenes con Cloudinary y una base de datos PostgreSQL gestionada con Prisma. Desarrollado con Next.js, TypeScript y SCSS, ofrece una experiencia responsive, ordenada y adaptada a las necesidades reales de administración de Hekademos.",
     githubUrl: "https://github.com/IgnacioTosini/hekademos-next",
     demoUrl: "https://hekademos.vercel.app",
     year: 2025,
     featured: true,
     videoUrl: "/projects/hekademos/demo.mp4",
-    technologies: ["Next.js", "TypeScript", "SCSS", "Node.js"],
+    technologies: ["Next.js", "TypeScript", "SCSS", "Node.js", "Prisma"],
     images: [
         {
             url: "/projects/hekademos/main.webp",

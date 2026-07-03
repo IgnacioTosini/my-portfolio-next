@@ -16,7 +16,7 @@ export const getProjects = async (): Promise<Project[]> => {
 
         return projects;
     } catch (error) {
-        console.log(error);
+        console.error("Error al obtener proyectos:", error);
         throw new Error("Error al obtener proyectos");
     }
 };

@@ -1,23 +1,33 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLanguage } from '@/providers/LanguageProvider';
-import { useProjectsQuery } from '@/hooks/project/useProjectsQuery';
+import type { Project } from '@/types/project';
 import './_techList.scss';
 
+const HINT_STORAGE_KEY = 'project-list-hint-seen';
+
 interface Props {
+    projects: Project[];
     selectedTech: string | null;
     onSelectTech: (id: string | null) => void;
 }
 
-export const TechList = ({ selectedTech, onSelectTech }: Props) => {
-    const { data: projects = [] } = useProjectsQuery();
+export const TechList = ({ projects, selectedTech, onSelectTech }: Props) => {
     const { t } = useLanguage();
-    const uniqueTechnologies = Array.from(
-        new Set(
-            projects.flatMap(project => project.technologies.map((technology) => technology.name))
-        )
-    ).sort((a, b) => a.localeCompare(b));
+    const technologyCounts = useMemo(() => {
+        const counts = new Map<string, number>();
+
+        projects.forEach((project) => {
+            project.technologies.forEach((technology) => {
+                counts.set(technology.name, (counts.get(technology.name) ?? 0) + 1);
+            });
+        });
+
+        return Array.from(counts.entries()).sort(([firstTech], [secondTech]) =>
+            firstTech.localeCompare(secondTech)
+        );
+    }, [projects]);
 
     const listRef = useRef<HTMLUListElement>(null);
     const [isScrollable, setIsScrollable] = useState(false);
@@ -26,7 +36,7 @@ export const TechList = ({ selectedTech, onSelectTech }: Props) => {
             return true;
         }
 
-        return sessionStorage.getItem('client-list-hint-seen') === 'true';
+        return sessionStorage.getItem(HINT_STORAGE_KEY) === 'true';
     });
 
     useEffect(() => {
@@ -58,7 +68,7 @@ export const TechList = ({ selectedTech, onSelectTech }: Props) => {
         }
 
         setHasSeenHint(true);
-        sessionStorage.setItem('project-list-hint-seen', 'true');
+        sessionStorage.setItem(HINT_STORAGE_KEY, 'true');
     };
 
     return (
@@ -79,11 +89,7 @@ export const TechList = ({ selectedTech, onSelectTech }: Props) => {
                     {t("works.allProjects")}
                 </li>
 
-                {uniqueTechnologies.map((tech) => {
-                    const projectCount = projects.filter(p =>
-                        p.technologies.some((technology) => technology.name === tech)
-                    ).length;
-
+                {technologyCounts.map(([tech, projectCount]) => {
                     return (
                         <li
                             key={tech}

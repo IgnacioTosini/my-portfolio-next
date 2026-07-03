@@ -4,13 +4,10 @@ const nextConfig: NextConfig = {
   images: {
     localPatterns: [
       {
-        pathname: "/dibujoFoto.webp",
-      },
-      {
         pathname: "/dibujoFoto.png",
       },
       {
-        pathname: "/perfil.jpeg",
+        pathname: "/fotoPerfil.jpeg",
       },
       {
         pathname: "/projects/**",
