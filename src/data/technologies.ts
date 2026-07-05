@@ -8,5 +8,8 @@ export const technologies = [
     { name: "Prisma", iconName: "SiPrisma" },
     { name: "PostgreSQL", iconName: "SiPostgresql" },
     { name: "SCSS", iconName: "SiSass" },
-    { name: "Tailwind", iconName: "SiTailwindcss" }
+    { name: "Tailwind", iconName: "SiTailwindcss" },
+    { name: "Zustand", iconName: "SiZustand" },
+    { name: "Cloudinary", iconName: "SiCloudinary" },
+    { name: "Vercel", iconName: "SiVercel" },
 ];

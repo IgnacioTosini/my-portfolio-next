@@ -5,7 +5,9 @@ import {
     SiPrisma,
     SiPostgresql,
     SiSass,
-    SiTailwindcss
+    SiTailwindcss,
+    SiCloudinary,
+    SiVercel,
 } from "react-icons/si";
 
 import {
@@ -13,6 +15,7 @@ import {
     FaReact,
 } from "react-icons/fa";
 import { BiLogoSpringBoot } from "react-icons/bi";
+import { RiBearSmileLine } from "react-icons/ri";
 
 export const icons = {
     SiNextdotjs,
@@ -22,6 +25,9 @@ export const icons = {
     SiPostgresql,
     SiSass,
     SiTailwindcss,
+    SiCloudinary,
+    SiVercel,
+    SiZustand: RiBearSmileLine,
     FaNodeJs,
     BiLogoSpringBoot,
     FaReact,

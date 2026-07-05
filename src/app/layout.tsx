@@ -7,7 +7,7 @@ import { getSiteUrl } from "@/utils/site-url";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import 'react-toastify/dist/ReactToastify.css';
-import "./globals.css";
+import "./globals.scss";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",

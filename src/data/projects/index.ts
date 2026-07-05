@@ -7,6 +7,9 @@ import { lemareProject } from "./lemare";
 import { ecommerceFakeProject } from './ecommerceFake';
 import { santiagoTosiniPortfolioProject } from "./santiagoTosiniPorfolio";
 import { sohamDesignProject } from "./sohamdesign";
+import { donnaEcommerceProject } from "./donna-ecommerce";
+import { activoSportBlvProject } from "./activoSportBlvProject";
+import { athleticArgentinaProject } from "./athletic_argentina";
 
 export const projects: ProjectSeed[] = [
     crostiFocacciaProject,
@@ -16,5 +19,8 @@ export const projects: ProjectSeed[] = [
     lemareProject,
     ecommerceFakeProject,
     santiagoTosiniPortfolioProject,
-    sohamDesignProject
+    sohamDesignProject,
+    donnaEcommerceProject,
+    activoSportBlvProject,
+    athleticArgentinaProject
 ];

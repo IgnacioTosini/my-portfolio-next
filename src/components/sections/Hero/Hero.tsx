@@ -98,8 +98,8 @@ export const Hero = () => {
           </a>
           <a
             className="link"
-            href="/CurriculumIgnacioTosini.pdf"
-            download="CurriculumIgnacioTosini.pdf"
+            href="/CvIgnacioTosini.pdf"
+            download="CvIgnacioTosini.pdf"
             data-hero-anim="link"
           >
             <FaCloudDownloadAlt size={24} className='icon' />
