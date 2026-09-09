@@ -6,7 +6,7 @@ export const lemareProject: ProjectSeed = {
     description: "Pagína Informatica sobre el equipo de futbol Lemare Fc.",
     longDescription: "Lemare es una página informativa dedicada al equipo de fútbol Lemare FC. La plataforma ofrece a los fanáticos y seguidores del equipo una experiencia completa para mantenerse al día con las últimas noticias, estadísticas de jugadores. Desarrollada con React, TypeScript, SpringBoot y SCSS, la página presenta un diseño moderno y responsivo que se adapta a diferentes dispositivos. Los usuarios pueden explorar secciones dedicadas a la historia del club, perfiles de jugadores y una galería multimedia con fotos y videos destacados. Además, la plataforma incluye una sección de contacto para que los fans puedan interactuar con el equipo.",
     githubUrl: "https://github.com/IgnacioTosini/lemare-fc",
-    demoUrl: "https://lemare-fc.vercel.app",
+    demoUrl: "https://lemare-fc-next.vercel.app",
     year: 2025,
     featured: true,
     videoUrl: "/projects/lemare/demo.mp4",

@@ -41,3 +41,9 @@ yarn-error.log*
 next-env.d.ts
 
 /src/generated/prisma
+
+# local PostgreSQL data (Docker volume)
+/postgres/
+
+# original project videos (publish compressed MP4 files)
+/public/projects/**/*.mov
