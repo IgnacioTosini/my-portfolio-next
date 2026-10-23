@@ -6,7 +6,7 @@ export const sohamDesignProject: ProjectSeed = {
     description: "Sistema de gestión para gimnasio.",
     longDescription: "Sistema integral desarrollado para So ham Design, orientado a centralizar la gestión diaria de un gimnasio. Permite administrar usuarios, alumnos, coaches, membresías, pagos, turnos, asistencia, rutinas y solicitudes de cambio de horario desde un panel administrativo. Los coaches pueden consultar sus alumnos, revisar horarios, actualizar rutinas y registrar información relevante, mientras que los alumnos cuentan con un perfil propio para ver su plan, pagos, asistencia, turnos elegidos, rutina y solicitar cambios. También incorpora recordatorios por email, recuperación de contraseña, auditoría de acciones, carga de imágenes con Cloudinary y una base de datos PostgreSQL gestionada con Prisma. Desarrollado con Next.js, TypeScript y SCSS, ofrece una experiencia responsive, ordenada y adaptada a las necesidades reales de administración de So ham Design.",
     githubUrl: "https://github.com/IgnacioTosini/so-ham-desing",
-    demoUrl: "https://so-ham-desing.vercel.app",
+    demoUrl: "https://so-ham-by-pato.vercel.app",
     year: 2025,
     featured: true,
     videoUrl: "/projects/soham-design/demo.mp4",
@@ -38,19 +38,34 @@ export const sohamDesignProject: ProjectSeed = {
             order: 4
         },
         {
-            url: "/projects/soham-design/adminGeneral.webp",
-            alt: "So ham Design - Admin General",
+            url: "/projects/soham-design/login.webp",
+            alt: "So ham Design - Login",
             order: 5
         },
         {
-            url: "/projects/soham-design/editStone.webp",
-            alt: "So ham Design - Edit Stone",
+            url: "/projects/soham-design/adminGeneral.webp",
+            alt: "So ham Design - Admin General",
             order: 6
         },
         {
-            url: "/projects/soham-design/editProduct.webp",
-            alt: "So ham Design - Edit Product",
+            url: "/projects/soham-design/adminCategories.webp",
+            alt: "So ham Design - Admin Categories",
             order: 7
+        },
+        {
+            url: "/projects/soham-design/adminSupplies.webp",
+            alt: "So ham Design - Admin Supplies",
+            order: 8
+        },
+        {
+            url: "/projects/soham-design/adminProducts.webp",
+            alt: "So ham Design - Admin Products",
+            order: 9
+        },
+        {
+            url: "/projects/soham-design/sharedDesigns.webp",
+            alt: "So ham Design - Shared Designs",
+            order: 10
         }
     ]
 };

@@ -29,24 +29,59 @@ export const crostiFocacciaProject: ProjectSeed = {
             order: 2
         },
         {
+            url: "/projects/crosti/products2.webp",
+            alt: "Crosti Focaccia - Products 2",
+            order: 3
+        },
+        {
             url: "/projects/crosti/howToOrder.webp",
             alt: "Crosti Focaccia - How to Order",
-            order: 3
+            order: 4
+        },
+        {
+            url: "/projects/crosti/questions.webp",
+            alt: "Crosti Focaccia - Questions",
+            order: 5
+        },
+        {
+            url: "/projects/crosti/footer.webp",
+            alt: "Crosti Focaccia - Footer",
+            order: 6
+        },
+        {
+            url: "/projects/crosti/wholesalers.webp",
+            alt: "Crosti Focaccia - Wholesalers",
+            order: 7
         },
         {
             url: "/projects/crosti/order.webp",
             alt: "Crosti Focaccia - Order",
-            order: 4
+            order: 8
+        },
+        {
+            url: "/projects/crosti/controlPanel.webp",
+            alt: "Crosti Focaccia - Control Panel",
+            order: 9
         },
         {
             url: "/projects/crosti/adminPanelProducts.webp",
             alt: "Crosti Focaccia - Admin Panel Products",
-            order: 5
+            order: 10
+        },
+        {
+            url: "/projects/crosti/adminPanelCombos.webp",
+            alt: "Crosti Focaccia - Admin Panel Combos",
+            order: 11
         },
         {
             url: "/projects/crosti/adminPanelOrders.webp",
             alt: "Crosti Focaccia - Admin Panel Orders",
-            order: 6
+            order: 12
+        },
+        {
+            url: "/projects/crosti/adminPanelContent.webp",
+            alt: "Crosti Focaccia - Admin Panel Content",
+            order: 13
         }
     ]
 };
