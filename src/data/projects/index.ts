@@ -10,6 +10,8 @@ import { sohamDesignProject } from "./sohamdesign";
 import { donnaEcommerceProject } from "./donna-ecommerce";
 import { activoSportBlvProject } from "./activoSportBlvProject";
 import { athleticArgentinaProject } from "./athletic_argentina";
+import { helloAgenciaCreativaProject } from "./helloAgenciaCreativa";
+import { elArcangelProject } from "./elArcangel";
 
 export const projects: ProjectSeed[] = [
     crostiFocacciaProject,
@@ -22,5 +24,7 @@ export const projects: ProjectSeed[] = [
     sohamDesignProject,
     donnaEcommerceProject,
     activoSportBlvProject,
-    athleticArgentinaProject
+    athleticArgentinaProject,
+    helloAgenciaCreativaProject,
+    elArcangelProject
 ];
